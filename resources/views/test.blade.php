@@ -1,18 +1,16 @@
 @extends('layouts.master') @section('content')
 <div class="container-fluid">
     <div class="row " style="padding-top:10px;">
-        <h3 class="text-center">Log Agregator </h3>
+        <h3 class="text-center">Log Agregator (1232 </h3>
         <div class="col-md-10">
             <div class="panel panel-info">
 
                 <div class="panel-body">
                     <ul class="media-list" id="messagelist">
 
-                        <li class="media">
-                            <div class="media-body">
+      
 
-                            </div>
-                        </li>
+                    
                     </ul>
                 </div>
 
@@ -36,8 +34,6 @@
                                     </a>
                                     <div class="media-body">
                                         <h5>Jhon Rexa | User </h5>
-
-                                        <small class="text-muted">Active From 3 hours</small>
                                     </div>
                                 </div>
 
@@ -56,8 +52,9 @@
 
 
 <script id="messageTemplate" type="text/x-jquery-tmpl">
+                  <li class="">
+                            <div class="">
     <div id="template" class= "message">
-sdasdadas
         <a class="pull-left" href="#">
 
         </a>
@@ -67,6 +64,8 @@ sdasdadas
              ${message}
         </div>
     </div>
+            </div>
+                        </li>
 </script>
 
 
@@ -75,26 +74,18 @@ sdasdadas
 
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 
-<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+<script src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
 <script type="text/javascript" src="">
 
     
 </script>
 <script>
-    //var socket = io('http://localhost:3000');
-    var socket = io('http://logsdashboard-jachno.c9users.io:8081');
-    //      var socket = io.connect("/");
 
+
+
+    var socket = io('https://logsdashboard-jachno.c9users.io:8081');
 
     socket.on("test-channel:App\\Events\\EventName", function(msg) {
-
-
-
-
-//on the way in see if we know about the log file, if not add it to the right hand menu and then sent its color
-//
-
-//do a logfile color look up
 
         var messages = [{
                             logFile: msg.data.logFile,
@@ -105,41 +96,62 @@ sdasdadas
             },
 
         ];
+        
+        if(activeState == true)
+        {
+            console.log('activeState: ' + activeState);
+            var s = document.title;
+            document.title =s.substring( 0, s.indexOf( "(" ) );
+        }
+        else
+        {
+            document.title =  'testtitl';
+            console.log('activeState: ' + activeState);
+        }
+
+
 
         var elem = $("#messageTemplate").tmpl(messages);
-        elem.addClass(msg.data.logFile);
+
         elem.prependTo("#messagelist");
-
-
-
-
-//localStorage.setItem('test',1);
-
-var sheet = document.createElement('style')
-sheet.innerHTML = msg.data.logFile + " {border: 2px solid black; color: red;}";
-console.log(sheet.innerHTML);
-document.body.appendChild(sheet);
-
-        //$('.media-body').append('<p>' + message.data.power);
-
-        console.log('test');
-        //$("#template")
-        // .clone()
-        // .show()
-        // .appendTo("#messagelist");
 
     });
     
     
+    var activeState;
+    
+    setInterval(function () { visibilitychange() }, 200);
+
+ visibilitychange = function () {
+
+    var BrowserState;
+    if (typeof document.hidden !== "undefined") {
+              BrowserState = "visibilityState";
+         }
+    else if (typeof document.webkitHidden !== "undefined") {
+              BrowserState = "webkitVisibilityState";
+         }
+    else if (typeof document.mozHidden !== "undefined") {
+              BrowserState = "mozVisibilityState";
+         }
+    else if (typeof document.msHidden !== "undefined") {
+             BrowserState = "msVisibilityState";
+         }
+
+     if (document[BrowserState] == "hidden")
+     {
+       // document.title = "Inactive";
+        activeState = false;
+     }
+     else
+     {
+        //document.title = "Active";
+        activeState = true;
+     }
+  }
     
 </script>
 
 
-<style type="text/css">
-
-thislogfile{
-    color:red;
-}
-</style>
 
 @stop

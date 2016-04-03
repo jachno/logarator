@@ -65,12 +65,7 @@ $error = '';
  }
 
 
-    
-   
- 
- 
- 
-      event(new EventName($input));
+     event(new EventName($input));
     
  
     }
