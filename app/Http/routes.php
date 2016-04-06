@@ -1,5 +1,6 @@
 <?php
 
+
  /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -30,4 +31,46 @@ Route::post('fire', 'eventController@fireEvent');
 Route::get('test', function () {
     // this checks for the event
     return view('test');
+});
+
+
+
+Route::get('check', function () {
+
+
+    $logFiles = array('CAM','LoadTest','Fusion','SAM');
+
+
+    $faker = Faker\Factory::create();
+
+    $carbon = Carbon\Carbon::create();
+
+    $client = new GuzzleHttp\Client();
+    
+    
+    $now = $carbon->now()->toDateTimeString();
+    echo $now;
+    $response = $client->request('POST',URL::to('fire'), ['json' => [
+        'logFile' =>$logFiles[$faker->numberBetween(0,3)],
+        'timeStamp' => $now,
+        'message' => $faker->realText
+    ]]);
+
+
+
+
+
+/*$client = new GuzzleHttp\Client();
+    $response = $client->request('POST', 'http://httpbin.org/post', [
+    'logFile' => 'test',
+    'timeStamp' => '231231',
+    'message' => 'mytestmessage'
+    ]);*/
+
+
+
+echo var_dump($response);
+
+
+    
 });

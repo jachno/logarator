@@ -24,9 +24,11 @@ class eventController extends Controller
      {
          
           $input = Request::json()->all();
+          echo 'json';
      }
      else
      {
+          echo 'json1';
          $input =  $request->all();
      }
      

@@ -24,7 +24,7 @@ socket.on("test-channel:App\\Events\\EventName", function(msg) {
 
 
     if ($("#" + msg.data.logFile).length == 0) {
-        messages[0].color = randomColor();
+        messages[0].color = randomColor({luminosity: 'dark'});
         var elem = $("#logTemplate").tmpl(messages);
         elem.prependTo("#logFiles");
     }
@@ -44,6 +44,14 @@ socket.on("test-channel:App\\Events\\EventName", function(msg) {
 
 });
 
+setInterval(openUrl, 5000);
+
+
+function openUrl(){
+
+
+
+}
 
     var activeState;
     
@@ -95,3 +103,7 @@ function toggleCheckbox(check) {
 
     $('.message.' + check.id).toggle();
 }
+
+
+
+

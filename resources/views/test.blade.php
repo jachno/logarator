@@ -1,7 +1,7 @@
 @extends('layouts.master') @section('content')
 <div class="container-fluid">
     <div class="row " style="padding-top:10px;">
-        <h3 class="text-center">Log Agregator  </h3>
+        <h3 class="text-center">logGregator</h3>
         <div class="col-md-10">
             <div class="panel panel-info">
 
