@@ -66,6 +66,7 @@ $error = '';
   return   response($error,400);
  }
 
+echo 'firing event ';
 
      event(new EventName($input));
     

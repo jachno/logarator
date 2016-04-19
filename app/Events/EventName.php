@@ -21,6 +21,7 @@ class EventName extends Event implements ShouldBroadcast
 
     public function broadcastOn()
     {
+        echo 'returning channel name';
         return ['test-channel'];
     }
 }
