@@ -37,7 +37,7 @@ Route::get('test', function () {
 
 Route::get('check', function () {
 
-
+    Redis::publish('test-channel', json_encode(['foo' => 'bar']));
     $logFiles = array('CAM','LoadTest','Fusion','SAM');
 
 
