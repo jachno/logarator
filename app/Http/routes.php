@@ -47,9 +47,9 @@ Route::get('check', function () {
 
     $client = new GuzzleHttp\Client();
     
+
+
     
-    $now = $carbon->now()->toDateTimeString();
-    echo $now;
     $response = $client->request('POST',URL::to('fire'), ['json' => [
         'logFile' =>$logFiles[$faker->numberBetween(0,3)],
         'timeStamp' => $now,
