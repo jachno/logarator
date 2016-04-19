@@ -47,7 +47,8 @@ Route::get('check', function () {
 
     $client = new GuzzleHttp\Client();
     
-
+    
+    $now = $carbon->now()->toDateTimeString();
 
     
     $response = $client->request('POST',URL::to('fire'), ['json' => [
