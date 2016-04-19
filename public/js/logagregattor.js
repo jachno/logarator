@@ -1,4 +1,3 @@
-var socket = io('https://logsdashboard-jachno.c9users.io:8081');
 
 socket.on("test-channel:App\\Events\\EventName", function(msg) {
 
@@ -43,6 +42,9 @@ socket.on("test-channel:App\\Events\\EventName", function(msg) {
 
 
 });
+
+
+
 
 setInterval(openUrl, 5000);
 

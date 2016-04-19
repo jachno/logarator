@@ -61,10 +61,13 @@
                         </li>
 </script>
 
-
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
 <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.4.4/randomColor.js"></script>
+
+
+<script type="text/javascript">var socket = io('{{ url('/')}}:8081');</script>
+
 <script type="text/javascript"src="/js/logagregattor.js"></script>
 
 @stop
