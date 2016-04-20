@@ -11,6 +11,7 @@ use App\Http\Requests;
 use \App\Events\EventName;
 use \App\Events\Event;
 use Response;
+ use Snipe\BanBuilder\CensorWords;
 
 class eventController extends Controller
 {
@@ -59,8 +60,9 @@ $error = '';
   
  
  
- 
 
+
+//var_export($string);
  if($error != '')
  {
   return   response($error,400);
