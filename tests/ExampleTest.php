@@ -16,5 +16,4 @@ class ExampleTest extends TestCase
         $this->visit('/')
              ->see('fire');
     }
-        
 }
