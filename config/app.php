@@ -93,7 +93,7 @@ return [
 
     'key' => env('APP_KEY'),
 
-    'cipher' => '2/AYc2t30O5EauDRPL2WmhpvOTvS0v32oFk04Fb1c7c=',
+    'cipher' => 'xlhF31NeOlibJcoOW9tvZg7TkHcAZI3a',
 
     /*
     |--------------------------------------------------------------------------
